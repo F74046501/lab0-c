@@ -9,7 +9,7 @@
  * operations.
  *
  * It uses a singly-linked list to represent the set of queue elements
- * /
+ */
 
 #include <stdbool.h>
 
@@ -19,17 +19,19 @@
 typedef struct ELE {
     /* Pointer to array holding string.
        This array needs to be explicitly allocated and freed */
-    char *value;
+    char *value;  // save the data
     struct ELE *next;
 } list_ele_t;
 
 /* Queue structure */
 typedef struct {
     list_ele_t *head; /* Linked list of elements */
-                      /*
-                        You will need to add more fields to this structure
-                        to efficiently implement q_size and q_insert_tail
-                      */
+    list_ele_t *tail;
+    int size;  // how big the queue is
+               /*
+                 You will need to add more fields to this structure
+                 to efficiently implement q_size and q_insert_tail
+               */
 } queue_t;
 
 /************** Operations on queue ************************/

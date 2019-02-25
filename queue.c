@@ -193,6 +193,8 @@ int q_size(queue_t *q)
 void q_reverse(queue_t *q)
 {
     /* You need to write the code for this function */
+
+    // null queue || empty queue || single node queue doesn't have to reverse
     if (q == NULL || q->head == NULL || q->head->next == NULL)
         return;
     else {
@@ -213,15 +215,24 @@ void q_reverse(queue_t *q)
 
                 if (next_element == NULL)
                     break;
+
                 pre_element = current_element;
                 current_element = next_element;
                 next_element = next_element->next;
             }
+            list_ele_t *tmp;
+            tmp = q->tail;
+            q->tail = q->head;
+            q->head = tmp;
         }
         // only exist two node
         else {
             current_element->next = pre_element;
             pre_element->next = NULL;
+            list_ele_t *tmp;
+            tmp = q->tail;
+            q->tail = q->head;
+            q->head = tmp;
         }
     }
 }
